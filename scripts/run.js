@@ -22,6 +22,22 @@ const main = async () => {
     console.log("Could not rob contract");
   }
 
+  // already taken 
+  try {
+    txn = await domainContract.register("a16z",  {value: hre.ethers.utils.parseEther('1234')});
+    await txn.wait();
+  } catch(error){
+    console.log("Could not register", error);
+  }
+
+  // too long
+  try {
+    txn = await domainContract.register("a16za16za16za16za16za16z",  {value: hre.ethers.utils.parseEther('1234')});
+    await txn.wait();
+  } catch(error){
+    console.log("Could not register", error);
+  }
+
   // Let's look in their wallet so we can compare later
   let ownerBalance = await hre.ethers.provider.getBalance(owner.address);
   console.log("Balance of owner before withdrawal:", hre.ethers.utils.formatEther(ownerBalance));

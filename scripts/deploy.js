@@ -6,16 +6,16 @@ const main = async () => {
   console.log("Contract deployed to:", domainContract.address);
 
   // CHANGE THIS DOMAIN TO SOMETHING ELSE! I don't want to see OpenSea full of bananas lol
-  let txn = await domainContract.register("the-last",  {value: hre.ethers.utils.parseEther('0.1')});
-  await txn.wait();
-  console.log("Minted domain the-last.ninja");
+  // let txn = await domainContract.register("the-last",  {value: hre.ethers.utils.parseEther('0.1')});
+  // await txn.wait();
+  // console.log("Minted domain the-last.ninja");
 
-  txn = await domainContract.setRecord("the-last", "Am I a banana or a ninja??");
-  await txn.wait();
-  console.log("Set record for the-last.ninja");
+  // txn = await domainContract.setRecord("the-last", "Am I a banana or a ninja??");
+  // await txn.wait();
+  // console.log("Set record for the-last.ninja");
 
-  const address = await domainContract.getAddress("the-last");
-  console.log("Owner of domain the-last:", address);
+  // const address = await domainContract.getAddress("the-last");
+  // console.log("Owner of domain the-last:", address);
 
   const balance = await hre.ethers.provider.getBalance(domainContract.address);
   console.log("Contract balance:", hre.ethers.utils.formatEther(balance));
